@@ -9,14 +9,18 @@ Pizza.prototype.calcToppingsPrice = function() {
   var toppingsMap = new Map();
   toppingsMap.set ("Red Sauce", 0.0)
   toppingsMap.set ("BBQ Sauce", 0.0)
+  toppingsMap.set ("White Sauce", 0.0)
   toppingsMap.set ("Pepperoni", 1.0)
   toppingsMap.set ("Ham", 1.0)
   toppingsMap.set ("Grilled Chicken", 2.0)
+  toppingsMap.set ("Sausage", 1.0)
   toppingsMap.set ("Seafood", 3.0)
   toppingsMap.set ("Mushrooms", 0.5)
   toppingsMap.set ("Black Olives", 0.5)
+  toppingsMap.set ("Onions", 0.5)
   toppingsMap.set ("Spinach", 0.5)
   toppingsMap.set ("Jalapenos", 0.5)
+  toppingsMap.set ("Artichokes", 1.0)
   toppingsMap.set ("Banana Peppers", 0.5)
   toppingsMap.set ("Regular Cheese", 0.0)
   toppingsMap.set ("Mozzarella", 1.0)
@@ -48,13 +52,16 @@ Pizza.prototype.calcPrice = function () {
     case 15:
         basePrice = 13.99;
         break;
-    default:
+    default: //18
         basePrice = 18.99
   }
 
-  return basePrice + totalToppingsPrice; 
+  return +(parseFloat(basePrice + totalToppingsPrice).toFixed(2)); //+avoids string conversion
 }
 
+Pizza.prototype.calcQuantityPrice = function() {
+  return this.calcPrice() * this.quantity; 
+}
 
 
 
