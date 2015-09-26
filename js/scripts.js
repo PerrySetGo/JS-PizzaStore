@@ -1,37 +1,36 @@
-function Pizza(size, toppings, quantity) {
+function Pizza(size, pizzaToppings) {
   this.size = size;
-  this.toppings = toppings;
-  this.quantity = quantity;
+  this.pizzaToppings = pizzaToppings;
 }
 
-Pizza.prototype.calcToppingsPrice = function() {
 
+Pizza.prototype.calcToppingsPrice = function() {
   var toppingsMap = new Map();
-  toppingsMap.set ("Red Sauce", 0.0)
-  toppingsMap.set ("BBQ Sauce", 0.0)
-  toppingsMap.set ("White Sauce", 0.0)
-  toppingsMap.set ("Pepperoni", 1.0)
-  toppingsMap.set ("Ham", 1.0)
-  toppingsMap.set ("Grilled Chicken", 2.0)
-  toppingsMap.set ("Sausage", 1.0)
-  toppingsMap.set ("Seafood", 3.0)
+  toppingsMap.set ("Red Sauce", 0)
+  toppingsMap.set ("BBQ Sauce", 0)
+  toppingsMap.set ("White Sauce", 0)
+  toppingsMap.set ("Pepperoni", 1)
+  toppingsMap.set ("Ham", 1)
+  toppingsMap.set ("Grilled Chicken", 2)
+  toppingsMap.set ("Sausage", 1)
+  toppingsMap.set ("Seafood", 3)
   toppingsMap.set ("Mushrooms", 0.5)
   toppingsMap.set ("Black Olives", 0.5)
   toppingsMap.set ("Onions", 0.5)
   toppingsMap.set ("Spinach", 0.5)
   toppingsMap.set ("Jalapenos", 0.5)
-  toppingsMap.set ("Artichokes", 1.0)
+  toppingsMap.set ("Artichokes", 1)
   toppingsMap.set ("Banana Peppers", 0.5)
-  toppingsMap.set ("Regular Cheese", 0.0)
-  toppingsMap.set ("Mozzarella", 1.0)
+  toppingsMap.set ("Regular Cheese", 0)
+  toppingsMap.set ("Mozzarella", 1)
   toppingsMap.set ("Feta Cheese", 1.5)
   toppingsMap.set ("Vegan Cheese", 1.5)
 
   var totalToppingsPrice = 0;
   for (var key of toppingsMap.keys()){
-    for(var i = 0; i < this.toppings.length; i++)
+    for(var i = 0; i < this.pizzaToppings.length; i++)
 
-    if (key == this.toppings[i] ){
+    if (key == this.pizzaToppings[i] ){
       var toppingPrice = toppingsMap.get(key);
       totalToppingsPrice = totalToppingsPrice + toppingPrice;
     }
@@ -40,7 +39,6 @@ Pizza.prototype.calcToppingsPrice = function() {
 }
 
 Pizza.prototype.calcPrice = function () {
-  var totalToppingsPrice = this.calcToppingsPrice(); 
   var basePrice = 0;
   switch(this.size) {
     case 8:
@@ -56,13 +54,38 @@ Pizza.prototype.calcPrice = function () {
         basePrice = 18.99
   }
 
-  return +(parseFloat(basePrice + totalToppingsPrice).toFixed(2)); //+avoids string conversion
+  return basePrice;
 }
-
-Pizza.prototype.calcQuantityPrice = function() {
-  return this.calcPrice() * this.quantity; 
-}
-
 
 
 ////// UI /////////
+$(document).ready(function(event) {
+  $('#calculatePrice').click(function(event){
+  event.preventDefault();
+
+  var pizzaToppings = [];
+  inputs = document.getElementsByClassName("topping");
+
+    for (var i = inputs.length -1 ; i>= 0; i--){
+        if (inputs[i].type === "checkbox" && inputs[i].checked){
+              pizzaToppings.push(inputs[i].value);  
+            }
+        }
+          debugger; 
+    var pizzaSize = parseInt($('input[name=size]:checked').val());
+    var quantity = parseInt($('input#quantity').val());
+    var newPizza = new Pizza(pizzaSize, pizzaToppings);
+    var toppingPrice = newPizza.calcToppingsPrice();
+    var basePrice = newPizza.calcPrice(toppingPrice);
+    var pricePer =  toppingPrice + basePrice; 
+    $('#pricePer').text("$" + pricePer); 
+    var priceTotal = quantity * pricePer; 
+    $('#priceTotal').text("$" + priceTotal); 
+  });
+
+  $('#placeOrder').click(function(event) {
+      event.preventDefault();
+          $(".orderPlaced").show();
+       
+      });
+});
