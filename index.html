@@ -11,7 +11,53 @@
   <body>
     <div class="container">
       <div class="row">
-        Web app here
+        <h1>WELCOME TO LITTLE SLICE O'HEAVEN PIZZA DELIVERY</h1>
+        <div class="col-md-6">
+          <form id="orderForm">
+          First, pick a base size for your pizza.<br>
+          <input type="radio" name="size" value="8" checked>8", $7.99<br>
+          <input type="radio" name="size" value="12">12", $11.99<br>
+          <input type="radio" name="size" value="15">15", $13.99<br>
+          <input type="radio" name="size" value="18">18", $18.99<br>
+          <br>
+          <br>
+          <br>
+          Now, add your sauce/toppings:<br>
+          <input type="checkbox" name="topping" class="topping" value="Red Sauce">Red Sauce, FREE<br>
+          <input type="checkbox" name="topping" class="topping" value="BBQ Sauce">BBQ Sauce, FREE<br>
+          <input type="checkbox" name="topping" class="topping" value="White Sauce">White Sauce, FREE<br>
+
+          <input type="checkbox" name="topping" class="topping" value="Pepperoni">Pepperoni +$1<br>
+          <input type="checkbox" name="topping" class="topping" value="Ham">Ham +$1<br>
+          <input type="checkbox" name="topping" class="topping" value="Grilled Chicken">Grilled Chicken +$2<br>
+          <input type="checkbox" name="topping" class="topping" value="Sausage">Sausage +$1<br>
+          <input type="checkbox" name="topping" class="topping" value="Seafood">Seafood +$3<br>
+          <input type="checkbox" name="topping" class="topping" value="Mushrooms">Mushrooms +¢50<br>
+          <input type="checkbox" name="topping" class="topping" value="Black Olives">Black Olives +¢50<br>
+          <input type="checkbox" name="topping" class="topping" value="Onions">Onions +¢50<br>
+          <input type="checkbox" name="topping" class="topping" value="Spinach">Spinach +¢50<br>
+          <input type="checkbox" name="topping" class="topping" value="Jalapenos">Jalapenos +¢50<br>
+          <input type="checkbox" name="topping" class="topping" value="Artichokes">Artichokes +$1<br>
+          <input type="checkbox" name="topping" class="topping" value="Banana Peppers">Banana Peppers, FREE<br>
+          <input type="checkbox" name="topping" class="topping" value="Regular Cheese">Regular Cheese, FREE<br>
+          <input type="checkbox" name="topping" class="topping" value="Mozzarella">Mozzarella, +$1<br>
+          <input type="checkbox" name="topping" class="topping" value="Feta Cheese">Feta Cheese, +$1.50<br>
+          <input type="checkbox" name="topping" class="topping" value="Vegan Cheese">Vegan Cheese, +$1.50<br>
+          <br>
+          <br>
+          How Many? <br>
+          <input id="quantity" name="quantity" type="number" min="1">
+          <br><br>
+          <button id="calculatePrice">Update Price</button><br><br>
+          Your current total per pizza is:<span id="pricePer">$7.99</span><br>
+          Your total price is: <span id="priceTotal">$7.99</span>
+          <br>
+          <br>
+          <button id="placeOrder">Place My Order!</button>
+        </form>
+        </div>
+        <div class="col-md-6" id="order">
+          <div class="orderPlaced">Your order is on its way to you! Please allow 30-45 minutes for delivery.</div>
       </div>
 
   </body>

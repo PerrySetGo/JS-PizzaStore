@@ -1,48 +1,13 @@
-/*div {
+.orderPlaced {
+	height:200px;
+	width:400px;
+	padding-top: 30px; 
+  display: none;
+  background: #EE6D4D;
+  font-size: 3rem;
+  color:white;
+  margin-top: 100px; 
+  padding-left: 30px; 
+  padding-right:30px; 
 
-
-}*/
-
-#logo {
-  width: 50%;
-}
-
-.center {
-  text-align: center;
-}
-
-#addPlayers {
-  width: 50%;
-  text-align: center;
-}
-
-#gameBoard{
-  display:none;
-}
-
-.box{
-  height:100px;
-  width:100px;
-  border: 1px solid black;
-  cursor:pointer;
-  margin:2px;
-  border-radius:5px;
-
-}
-
-.symbol{
-  font-size:7rem;
-  cursor:not-allowed;
-}
-
-.xMark {
-  background-image:url("../img/x.png");
-  background-size:contain;
-  cursor:not-allowed;
-}
-
-.oMark {
-  background-image:url("../img/o.png");
-  background-size:contain;
-  cursor:not-allowed;
 }
